@@ -47,3 +47,7 @@ export function approveSighting(id: string): void {
 export function pendingCount(): number {
   return getPendingSightings().length;
 }
+
+export function clearAllSightings(): void {
+  localStorage.removeItem(STORAGE_KEY);
+}

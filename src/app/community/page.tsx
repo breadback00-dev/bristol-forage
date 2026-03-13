@@ -9,49 +9,52 @@ import {
   getPendingSightings,
   addSighting,
   approveSighting,
+  clearAllSightings,
 } from "@/lib/sightings";
 
 export default function CommunityPage() {
   const [approved, setApproved] = useState<Sighting[]>([]);
   const [pending, setPending] = useState<Sighting[]>([]);
+  const [toast, setToast] = useState<string | null>(null);
 
   // Form state
   const [formSpecies, setFormSpecies] = useState("");
   const [formLocation, setFormLocation] = useState("");
   const [formGridRef, setFormGridRef] = useState("");
-  const [formDate, setFormDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
+  const [formDate, setFormDate] = useState(new Date().toISOString().split("T")[0]);
   const [formWeather, setFormWeather] = useState("");
   const [formConditions, setFormConditions] = useState("");
   const [formNotes, setFormNotes] = useState("");
   const [formName, setFormName] = useState("");
-  const [formError, setFormError] = useState("");
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [hasPhoto, setHasPhoto] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   function reload() {
     setApproved(getApprovedSightings());
     setPending(getPendingSightings());
   }
 
-  useEffect(() => {
-    reload();
-  }, []);
+  useEffect(() => { reload(); }, []);
+
+  function showToast(msg: string) {
+    setToast(msg);
+    setTimeout(() => setToast(null), 3000);
+  }
 
   function handleApprove(id: string) {
     approveSighting(id);
     reload();
+    window.dispatchEvent(new Event("forage:sighting-changed"));
   }
 
   function handleSubmit() {
-    setFormError("");
-    if (!formSpecies) {
-      setFormError("Please select a species.");
-      return;
-    }
-    if (!formLocation && !formGridRef) {
-      setFormError("Please select a location or enter an OS grid ref.");
-      return;
-    }
+    const errors: Record<string, string> = {};
+    if (!formSpecies) errors.species = "Please select a species.";
+    if (!formLocation && !formGridRef) errors.location = "Select a location or enter a grid ref.";
+
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) return;
 
     addSighting({
       species: formSpecies,
@@ -62,10 +65,10 @@ export default function CommunityPage() {
       conditions: formConditions,
       notes: formNotes,
       name: formName || "Anonymous",
-      hasPhoto: false,
+      hasPhoto,
     });
 
-    // Reset form
+    // Reset
     setFormSpecies("");
     setFormLocation("");
     setFormGridRef("");
@@ -73,11 +76,31 @@ export default function CommunityPage() {
     setFormConditions("");
     setFormNotes("");
     setFormName("");
+    setPhotoPreview(null);
+    setHasPhoto(false);
+    setFieldErrors({});
+
     reload();
+    window.dispatchEvent(new Event("forage:sighting-changed"));
+    showToast("Sighting submitted! It will appear after review.");
+  }
+
+  function handleClearAll() {
+    clearAllSightings();
+    reload();
+    window.dispatchEvent(new Event("forage:sighting-changed"));
   }
 
   return (
     <div className="max-w-4xl mx-auto px-5 py-8">
+
+      {/* Toast */}
+      {toast && (
+        <div className="fixed top-14 left-1/2 -translate-x-1/2 z-[2000] bg-forage-green text-white font-sans text-sm px-5 py-2.5 rounded-full shadow-lg animate-fade-in">
+          ✓ {toast}
+        </div>
+      )}
+
       <h1 className="font-serif text-xl text-forage-green-dark mb-6">
         Community Sightings
       </h1>
@@ -85,16 +108,12 @@ export default function CommunityPage() {
       {/* Pending */}
       {pending.length > 0 && (
         <div className="mb-8">
-          <p className="font-sans text-[13px] uppercase tracking-widest text-forage-brown font-bold mb-3">
+          <p className="font-sans text-[13px] uppercase tracking-widests text-forage-brown font-bold mb-3">
             ● Pending Review
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {pending.map((s) => (
-              <SightingCard
-                key={s.id}
-                sighting={s}
-                onApprove={() => handleApprove(s.id)}
-              />
+              <SightingCard key={s.id} sighting={s} onApprove={() => handleApprove(s.id)} />
             ))}
           </div>
         </div>
@@ -122,32 +141,28 @@ export default function CommunityPage() {
           Submit a Sighting
         </h2>
 
-        <FormField label="Species *">
+        <FormField label="Species *" error={fieldErrors.species}>
           <select
             value={formSpecies}
-            onChange={(e) => setFormSpecies(e.target.value)}
-            className="w-full px-3 py-2 border border-forage-border rounded-lg font-serif text-[13px] bg-white focus:outline-none focus:border-forage-green"
+            onChange={(e) => { setFormSpecies(e.target.value); setFieldErrors((p) => ({ ...p, species: "" })); }}
+            className={`w-full px-3 py-2 border rounded-lg font-serif text-[13px] bg-white focus:outline-none focus:border-forage-green ${fieldErrors.species ? "border-forage-red" : "border-forage-border"}`}
           >
             <option value="">-- Select species --</option>
             {species.map((sp) => (
-              <option key={sp.id} value={sp.name}>
-                {sp.name}
-              </option>
+              <option key={sp.id} value={sp.name}>{sp.name}</option>
             ))}
           </select>
         </FormField>
 
-        <FormField label="Bristol Location">
+        <FormField label="Bristol Location" error={fieldErrors.location}>
           <select
             value={formLocation}
-            onChange={(e) => setFormLocation(e.target.value)}
-            className="w-full px-3 py-2 border border-forage-border rounded-lg font-serif text-[13px] bg-white focus:outline-none focus:border-forage-green"
+            onChange={(e) => { setFormLocation(e.target.value); setFieldErrors((p) => ({ ...p, location: "" })); }}
+            className={`w-full px-3 py-2 border rounded-lg font-serif text-[13px] bg-white focus:outline-none focus:border-forage-green ${fieldErrors.location ? "border-forage-red" : "border-forage-border"}`}
           >
             <option value="">-- Select location --</option>
             {locations.map((loc) => (
-              <option key={loc.id} value={loc.name}>
-                {loc.name}
-              </option>
+              <option key={loc.id} value={loc.name}>{loc.name}</option>
             ))}
           </select>
         </FormField>
@@ -160,7 +175,7 @@ export default function CommunityPage() {
           <input
             type="text"
             value={formGridRef}
-            onChange={(e) => setFormGridRef(e.target.value)}
+            onChange={(e) => { setFormGridRef(e.target.value); setFieldErrors((p) => ({ ...p, location: "" })); }}
             placeholder="e.g. ST5573"
             className="w-full px-3 py-2 border border-forage-border rounded-lg font-serif text-[13px] focus:outline-none focus:border-forage-green"
           />
@@ -205,6 +220,28 @@ export default function CommunityPage() {
           />
         </FormField>
 
+        <FormField label="Photo (optional)">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                setPhotoPreview(URL.createObjectURL(file));
+                setHasPhoto(true);
+              }
+            }}
+            className="w-full font-sans text-xs text-forage-muted file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-sans file:bg-forage-green-light file:text-forage-green-dark hover:file:bg-forage-green hover:file:text-white file:cursor-pointer"
+          />
+          {photoPreview && (
+            <img
+              src={photoPreview}
+              alt="Preview"
+              className="mt-2 w-full max-h-36 object-cover rounded-lg border border-forage-border"
+            />
+          )}
+        </FormField>
+
         <FormField label="Your Name (optional)">
           <input
             type="text"
@@ -215,12 +252,6 @@ export default function CommunityPage() {
           />
         </FormField>
 
-        {formError && (
-          <p className="text-forage-red font-sans text-[11px] mb-3">
-            {formError}
-          </p>
-        )}
-
         <button
           onClick={handleSubmit}
           className="bg-forage-green text-white border-none rounded-lg px-6 py-2.5 font-serif text-sm cursor-pointer hover:bg-forage-green-dark transition-colors"
@@ -229,10 +260,21 @@ export default function CommunityPage() {
         </button>
 
         <div className="font-sans text-[10px] text-forage-muted bg-forage-green-light rounded-lg p-3 mt-4 leading-relaxed">
-          Personal foraging permitted under the Theft Act 1968. Never uproot
-          plants without landowner permission. Always use multiple identification
-          methods before consuming any wild food.
+          Personal foraging permitted under the Theft Act 1968. Never uproot plants without
+          landowner permission. Always use multiple identification methods before consuming
+          any wild food.
         </div>
+      </div>
+
+      {/* Dev reset */}
+      <div className="mt-12 pt-6 border-t border-forage-border">
+        <p className="font-sans text-[10px] text-forage-muted mb-2">Dev tools</p>
+        <button
+          onClick={handleClearAll}
+          className="font-sans text-[11px] text-forage-muted border border-forage-border rounded px-3 py-1.5 hover:border-forage-red hover:text-forage-red transition-colors"
+        >
+          Clear all sightings
+        </button>
       </div>
     </div>
   );
@@ -240,9 +282,11 @@ export default function CommunityPage() {
 
 function FormField({
   label,
+  error,
   children,
 }: {
   label: string;
+  error?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -251,6 +295,9 @@ function FormField({
         {label}
       </label>
       {children}
+      {error && (
+        <p className="font-sans text-[10px] text-forage-red mt-0.5">{error}</p>
+      )}
     </div>
   );
 }
@@ -264,9 +311,7 @@ function SightingCard({
 }) {
   return (
     <div className="bg-white rounded-xl p-4 border border-forage-border shadow-sm">
-      <p className="font-serif text-sm text-forage-green-dark mb-1">
-        {sighting.species}
-      </p>
+      <p className="font-serif text-sm text-forage-green-dark mb-1">{sighting.species}</p>
       <p className="font-sans text-[11px] text-forage-muted leading-relaxed mb-2">
         {sighting.location || sighting.gridRef || "Location unknown"}
         {sighting.date && ` · ${sighting.date}`}
@@ -278,9 +323,7 @@ function SightingCard({
         <p className="text-xs leading-relaxed mb-2">{sighting.notes}</p>
       )}
       {sighting.hasPhoto && (
-        <p className="font-sans text-[10px] text-forage-green mt-1">
-          📷 Photo attached
-        </p>
+        <p className="font-sans text-[10px] text-forage-green mt-1">📷 Photo attached</p>
       )}
       <p className="font-sans text-[10px] text-forage-muted mt-1.5">
         Submitted by {sighting.name}

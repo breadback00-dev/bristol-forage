@@ -17,6 +17,9 @@ export default function Nav() {
 
   useEffect(() => {
     setPending(pendingCount());
+    const handler = () => setPending(pendingCount());
+    window.addEventListener("forage:sighting-changed", handler);
+    return () => window.removeEventListener("forage:sighting-changed", handler);
   }, [pathname]);
 
   function isActive(href: string) {

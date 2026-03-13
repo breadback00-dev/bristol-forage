@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from "react-leaflet";
 import L from "leaflet";
 import { locations } from "@/data/locations";
 import { species } from "@/data/species";
@@ -57,7 +57,7 @@ export default function MapView() {
   return (
     <div className="fixed inset-0 top-12">
       {/* Search bar */}
-      <div className="absolute top-4 left-4 right-4 z-[500] flex flex-col gap-2 pointer-events-none max-w-md">
+      <div className="absolute top-4 left-4 right-4 z-[500] flex flex-col gap-2 pointer-events-none max-w-sm md:max-w-md">
         <input
           type="text"
           placeholder="Search plants…"
@@ -66,13 +66,13 @@ export default function MapView() {
           className="pointer-events-auto w-full px-4 py-2.5 rounded-full border border-forage-border bg-white font-sans text-sm shadow-lg focus:outline-none focus:border-forage-green"
         />
 
-        {/* Category chips */}
-        <div className="pointer-events-auto flex flex-wrap gap-1.5">
+        {/* Category chips — horizontal scroll on mobile */}
+        <div className="pointer-events-auto flex gap-1.5 overflow-x-auto pb-1 scrollbar-hide">
           {["all", ...CATEGORY_LIST].map((cat) => (
             <button
               key={cat}
               onClick={() => setCatFilter(cat as "all" | Category)}
-              className={`px-3 py-1 rounded-full text-xs font-sans transition-all shadow-sm ${
+              className={`px-3 py-1 rounded-full text-xs font-sans transition-all shadow-sm shrink-0 ${
                 catFilter === cat
                   ? "bg-forage-green text-white"
                   : "bg-white text-forage-ink border border-forage-border hover:border-forage-green"
@@ -96,6 +96,7 @@ export default function MapView() {
         className="w-full h-full"
         zoomControl={false}
       >
+        <ZoomControl position="bottomright" />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

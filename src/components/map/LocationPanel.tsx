@@ -16,7 +16,12 @@ export default function LocationPanel({ location, onClose }: Props) {
     .filter(Boolean);
 
   return (
-    <div className="absolute top-0 right-0 w-[340px] max-w-[92%] h-full bg-white shadow-[-4px_0_24px_rgba(0,0,0,0.18)] z-[500] overflow-y-auto flex flex-col animate-slide-in">
+    <div className="absolute bottom-0 left-0 right-0 max-h-[70vh] rounded-t-2xl md:bottom-auto md:top-0 md:left-auto md:right-0 md:w-[340px] md:max-w-[92%] md:h-full md:max-h-full md:rounded-none bg-white shadow-[0_-4px_24px_rgba(0,0,0,0.18)] md:shadow-[-4px_0_24px_rgba(0,0,0,0.18)] z-[500] overflow-y-auto flex flex-col animate-slide-in">
+      {/* Drag handle (mobile only) */}
+      <div className="flex justify-center pt-3 pb-1 md:hidden shrink-0">
+        <div className="w-10 h-1 rounded-full bg-forage-border" />
+      </div>
+
       {/* Close button */}
       <button
         onClick={onClose}
