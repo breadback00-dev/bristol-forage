@@ -4,12 +4,14 @@ export const locations: Location[] = [
   {
     id: "leigh-woods",
     name: "Leigh Woods",
+    microRegion: "Leigh Woods",
     gridRef: "ST5573",
     habitat: "Woodland",
     colour: "#4a7c5f",
     lat: 51.462,
     lng: -2.645,
     access: "National Trust. Free pedestrian access. Car park off B3129.",
+    accessibility: ["Wooded", "Steep"],
     description:
       "Ancient semi-natural woodland on the Avon Gorge slopes, rich in fungi, wild garlic and spring greens.",
     speciesIds: [
@@ -24,6 +26,7 @@ export const locations: Location[] = [
   {
     id: "blaise-castle",
     name: "Blaise Castle",
+    microRegion: "Other",
     gridRef: "ST5578",
     habitat: "Woodland",
     colour: "#4a7c5f",
@@ -31,6 +34,7 @@ export const locations: Location[] = [
     lng: -2.634,
     access:
       "Bristol City Council. Open access. Car park on Kings Weston Road.",
+    accessibility: ["Wooded", "Paved Path"],
     description:
       "Wooded gorge and meadow estate in north Bristol. Good for hedgerow fruits and spring greens.",
     speciesIds: [
@@ -45,12 +49,14 @@ export const locations: Location[] = [
   {
     id: "goblin-combe",
     name: "Goblin Combe",
+    microRegion: "Other",
     gridRef: "ST4665",
     habitat: "Woodland",
     colour: "#4a7c5f",
     lat: 51.392,
     lng: -2.765,
     access: "Avon Wildlife Trust reserve. Open access on marked paths.",
+    accessibility: ["Wooded", "Steep"],
     description:
       "Limestone woodland combe with diverse flora. Notable for autumn fungi and spring woodland herbs.",
     speciesIds: [
@@ -65,6 +71,7 @@ export const locations: Location[] = [
   {
     id: "warmley-forest",
     name: "Warmley Forest Park",
+    microRegion: "Other",
     gridRef: "ST6672",
     habitat: "Woodland",
     colour: "#4a7c5f",
@@ -72,6 +79,7 @@ export const locations: Location[] = [
     lng: -2.463,
     access:
       "South Gloucestershire Council. Free access. Car park off Tower Road North.",
+    accessibility: ["Wooded", "Paved Path"],
     description:
       "Former industrial site replanted as mixed woodland. Emerging foraging spot with fungi and hedgerow fruits.",
     speciesIds: [
@@ -86,6 +94,7 @@ export const locations: Location[] = [
   {
     id: "ashton-court",
     name: "Ashton Court Estate",
+    microRegion: "Ashton Court",
     gridRef: "ST5572",
     habitat: "Hedgerow",
     colour: "#7a6248",
@@ -93,6 +102,7 @@ export const locations: Location[] = [
     lng: -2.652,
     access:
       "Bristol City Council. Open access. Car park on Long Ashton Road.",
+    accessibility: ["Paved Path", "Wooded", "Stroller Accessible"],
     description:
       "Vast deer park and woodland estate with excellent hedgerows and mature trees.",
     speciesIds: [
@@ -107,6 +117,7 @@ export const locations: Location[] = [
   {
     id: "avon-gorge",
     name: "Avon Gorge",
+    microRegion: "The Downs",
     gridRef: "ST5673",
     habitat: "Hedgerow",
     colour: "#7a6248",
@@ -114,6 +125,7 @@ export const locations: Location[] = [
     lng: -2.628,
     access:
       "National Trust / Natural England SSSI. Keep strictly to paths. Clifton Suspension Bridge area.",
+    accessibility: ["Steep", "Paved Path"],
     description:
       "Dramatic limestone gorge with rare flora. Forage only common species on footpath margins.",
     speciesIds: [
@@ -127,6 +139,7 @@ export const locations: Location[] = [
   {
     id: "dundry-hill",
     name: "Dundry Hill",
+    microRegion: "South Bristol",
     gridRef: "ST5566",
     habitat: "Hedgerow",
     colour: "#7a6248",
@@ -134,6 +147,7 @@ export const locations: Location[] = [
     lng: -2.608,
     access:
       "Mix of farmland and public footpaths. Stick to rights of way.",
+    accessibility: ["Steep", "Wooded"],
     description:
       "High ground south of Bristol with panoramic views. Superb hedgerow species and grassland herbs.",
     speciesIds: [
@@ -148,6 +162,7 @@ export const locations: Location[] = [
   {
     id: "failand",
     name: "Failand",
+    microRegion: "Other",
     gridRef: "ST5170",
     habitat: "Hedgerow",
     colour: "#7a6248",
@@ -155,6 +170,7 @@ export const locations: Location[] = [
     lng: -2.713,
     access:
       "Public footpaths through farmland. OS Explorer 154 recommended.",
+    accessibility: ["Wooded"],
     description:
       "Rolling farmland west of Bristol with ancient hedgerows rich in sloe, hawthorn and rose hip.",
     speciesIds: [
@@ -169,6 +185,7 @@ export const locations: Location[] = [
   {
     id: "snuff-mills",
     name: "Snuff Mills",
+    microRegion: "Frome Valley",
     gridRef: "ST6276",
     habitat: "Wetland",
     colour: "#557278",
@@ -176,6 +193,7 @@ export const locations: Location[] = [
     lng: -2.528,
     access:
       "Bristol City Council. Open access along River Frome. Car park off Frenchay Park Road.",
+    accessibility: ["Paved Path", "Wooded", "Stroller Accessible"],
     description:
       "River valley with wet woodland and streamside vegetation. Good for spring greens.",
     speciesIds: [
@@ -189,6 +207,7 @@ export const locations: Location[] = [
   {
     id: "stockwood",
     name: "Stockwood Open Space",
+    microRegion: "South Bristol",
     gridRef: "ST6268",
     habitat: "Grassland",
     colour: "#6a4878",
@@ -196,6 +215,7 @@ export const locations: Location[] = [
     lng: -2.534,
     access:
       "Bristol City Council. Open access. Car park off Stockwood Road.",
+    accessibility: ["Paved Path"],
     description:
       "Unimproved grassland in south Bristol. Excellent for yarrow, hawthorn and late summer fungi.",
     speciesIds: [

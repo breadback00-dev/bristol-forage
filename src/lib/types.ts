@@ -6,6 +6,7 @@ export interface Species {
   latinName: string;
   category: Category;
   prep: PrepType;
+  difficulty: DifficultyType;
   seasonStart: number; // 0-indexed month (0 = Jan)
   seasonEnd: number;
   habitat: string;
@@ -30,18 +31,24 @@ export interface Species {
 
 export type Category = "Hedgerow" | "Fungi" | "Greens" | "Herbs" | "Fruits";
 export type PrepType = "raw" | "cook" | "process";
+export type DifficultyType = "Beginner Friendly" | "Expert Only";
 
 export type HabitatType = "Woodland" | "Hedgerow" | "Wetland" | "Grassland";
+
+export type AccessibilityType = "Paved Path" | "Wooded" | "Steep" | "Stroller Accessible";
+export type MicroRegionType = "The Downs" | "Leigh Woods" | "Eastville Park" | "Frome Valley" | "Ashton Court" | "South Bristol" | "Other";
 
 export interface Location {
   id: string;
   name: string;
+  microRegion: MicroRegionType;
   gridRef: string;
   habitat: HabitatType;
   colour: string;
   lat: number;
   lng: number;
   access: string;
+  accessibility: AccessibilityType[];
   description: string;
   speciesIds: string[]; // references to Species.id
 }
