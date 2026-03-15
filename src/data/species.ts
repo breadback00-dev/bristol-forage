@@ -599,6 +599,319 @@ export const species: Species[] = [
       lookalikeFull: "No dangerous lookalikes.",
     },
   },
+  {
+    id: "alexanders",
+    name: "Alexanders",
+    latinName: "Smyrnium olusatrum",
+    category: "Greens",
+    prep: "cook",
+    seasonStart: 0,
+    seasonEnd: 4,
+    habitat: "Coastal paths, hedgerows, roadsides, waste ground",
+    keyId: [
+      "Celery-like glossy dark green leaves and yellowish-green flowers",
+      "Robust, hollow, grooved stems that smell like celery when crushed",
+    ],
+    lookalike: "Hemlock (Conium maculatum) \u2014 DEADLY. Hemlock has purple-spotted stems and mousy smell. Alexanders has glossy leaves and celery scent.",
+    nutrition: { protein: 0.2, vitaminC: 0.4, iron: 0.3 },
+    locationHint: "Avon Gorge and coastal paths near Clevedon often have abundant Alexanders in early spring.",
+    full: {
+      idPoints: [
+        "Glossy dark green leaves, divided into 3 segments",
+        "Yellow-green umbel flower clusters in early spring",
+        "Robust grooved hollow stems",
+        "Smells like celery or parsley when crushed",
+        "Seeds turn black when ripe",
+      ],
+      harvest: "Young stems and leaf stalks in late winter and early spring. Roots can be harvested in autumn.",
+      uses: "Stems can be candied, steamed like asparagus, or added to soups and stews.",
+      equipment: "Knife, container.",
+      storage: "Use within 3 days. Stems keep better if kept upright in water.",
+      lookalikeFull: "Hemlock (Conium maculatum) \u2014 DEADLY. Hemlock stems have purple spots and a mousy smell. Alexanders leaves are much glossier and smell like celery.",
+    },
+  },
+  {
+    id: "dandelion",
+    name: "Dandelion",
+    latinName: "Taraxacum officinale",
+    category: "Greens",
+    prep: "raw",
+    seasonStart: 1,
+    seasonEnd: 9,
+    habitat: "Grassland, lawns, roadsides, disturbed ground",
+    keyId: [
+      "Deeply toothed rosette leaves with hollow stems producing milky white sap when broken",
+      "Bright yellow composite flower, single per hollow stem; spherical clock seedhead",
+    ],
+    lookalike: null,
+    nutrition: { protein: 0.35, vitaminC: 0.65, iron: 0.55 },
+    locationHint:
+      "Ubiquitous across Bristol parks and verges. Young spring leaves before flowering are least bitter.",
+    full: {
+      idPoints: [
+        "Deeply lobed toothed leaves in a flat ground-level rosette",
+        "Hollow stems and leaf midribs exude milky white latex when cut",
+        "Single bright yellow composite flower per hollow stem",
+        "Spherical white clock seedhead of parachute seeds",
+        "Thick taproot with dark brown skin and white interior",
+      ],
+      harvest:
+        "Pick young leaves before flowering in spring for least bitterness. Flowers and roots also edible.",
+      uses: "Leaves in salads or sautéed like spinach; flowers in wine or fritters; roots roasted as coffee substitute.",
+      equipment: "Bag or small container.",
+      storage: "Use within 2 days. Blanch and freeze for longer storage.",
+      lookalikeFull:
+        "No dangerous lookalikes. Cat's ear (Hypochaeris radicata) and hawkweeds are all edible. The hollow stem with milky latex is definitive.",
+    },
+  },
+  {
+    id: "cleavers",
+    name: "Cleavers",
+    latinName: "Galium aparine",
+    category: "Greens",
+    prep: "cook",
+    seasonStart: 1,
+    seasonEnd: 5,
+    habitat: "Hedgerow, woodland edge, disturbed ground",
+    keyId: [
+      "Whorls of 6–8 narrow sticky leaves up clinging stems — adheres to clothing instantly",
+      "Tiny bristly round fruits and minute white four-petalled flowers",
+    ],
+    lookalike: null,
+    nutrition: { protein: 0.2, vitaminC: 0.4, iron: 0.25 },
+    locationHint:
+      "Hedgerow bases throughout Bristol. Young spring growth before May is most palatable — later growth is too tough.",
+    full: {
+      idPoints: [
+        "Whorls of 6–8 narrow lance-shaped leaves with tiny backward-pointing bristles",
+        "Square stem with fine bristles — sticks instantly to clothing on contact",
+        "Tiny round hooked fruits that cling to animal fur and clothing",
+        "Minute white four-petalled flowers in small axillary clusters",
+        "Bright green young growth in spring — darker and tougher later",
+      ],
+      harvest:
+        "Pick young growing tips in spring only. Older plants become too fibrous. Do not eat raw in quantity.",
+      uses: "Juice pressed from young growth as a spring tonic; cooked and strained like a vegetable; seeds roasted as a coffee substitute.",
+      equipment: "Scissors, bag.",
+      storage: "Use within 2 days.",
+      lookalikeFull:
+        "All other bedstraws (Galium spp.) are edible. The whorled sticky leaves on a square stem are entirely distinctive.",
+    },
+  },
+  {
+    id: "ground-elder",
+    name: "Ground Elder",
+    latinName: "Aegopodium podagraria",
+    category: "Greens",
+    prep: "cook",
+    seasonStart: 1,
+    seasonEnd: 4,
+    habitat: "Shaded gardens, woodland edge, damp disturbed ground",
+    keyId: [
+      "Compound leaves in threes-of-threes — three main divisions each split into three toothed leaflets",
+      "Ridged solid stem with pleasant celery-like smell when crushed",
+    ],
+    lookalike:
+      "Hemlock (Conium maculatum) — DEADLY. Hemlock has purple-blotched HOLLOW stem with mousy smell. Ground elder stem is SOLID and smells of celery. Always check stem and smell all umbellifers.",
+    nutrition: { protein: 0.3, vitaminC: 0.55, iron: 0.4 },
+    locationHint:
+      "Common in shaded gardens and woodland edges throughout Bristol. A persistent garden weed — foraging actively helps control it.",
+    full: {
+      idPoints: [
+        "Compound leaves: three main leaflets each divided into three toothed sub-leaflets",
+        "Bright fresh green in spring, smooth leaf surface",
+        "Ridged stem, solid throughout — critical distinction from hollow-stemmed lookalikes",
+        "Pleasant celery-parsley smell when crushed",
+        "Flat-topped white umbel flowers in May–June",
+      ],
+      harvest:
+        "Harvest young spring leaves before flowering — late February to April. Older leaves become rank and unpleasant.",
+      uses: "Cooked like spinach, in soups, risotto, pasta. Flavour similar to mild parsley or angelica.",
+      equipment: "Scissors, bag.",
+      storage: "Use within 2 days. Blanch and freeze.",
+      lookalikeFull:
+        "Hemlock (DEADLY) — hollow purple-blotched stem, mousy unpleasant smell. Cow parsley (edible, but ID carefully). Ground elder's divided compound leaves and SOLID ridged stem are the key tests. Never eat any umbellifer without checking stem and smell.",
+    },
+  },
+  {
+    id: "sweet-chestnut",
+    name: "Sweet Chestnut",
+    latinName: "Castanea sativa",
+    category: "Fruits",
+    prep: "cook",
+    seasonStart: 8,
+    seasonEnd: 9,
+    habitat: "Woodland, parkland, planted estate trees",
+    keyId: [
+      "Long (15–25cm) glossy toothed leaves; very spiny husks — spines dense and hair-like",
+      "Husks split to reveal 2–3 shiny brown flattened nuts with a pointed tip",
+    ],
+    lookalike:
+      "Horse Chestnut (Aesculus hippocastanum) — NOT edible. Horse chestnuts have palmate compound leaves and much smoother, fewer-spined conker shells. Sweet chestnut has simple elongated serrated leaves.",
+    nutrition: { protein: 0.5, vitaminC: 0.25, iron: 0.4 },
+    locationHint:
+      "Ashton Court estate and Leigh Woods have mature sweet chestnut trees producing reliable autumn crops. Look for split husks on the ground from October.",
+    full: {
+      idPoints: [
+        "Simple (not compound) long glossy toothed leaves, 15–25cm",
+        "Very dense spiny green husks — spines hair-like, 2–3cm long",
+        "2–3 shiny brown flattened nuts per husk with a pale pointed tip",
+        "Bark on older trees has distinctive spiral fissures",
+        "Quite different from horse chestnut: simple leaves, much spinier husk",
+      ],
+      harvest:
+        "Collect from September when husks split and nuts fall. Wear thick gloves — spines are sharp.",
+      uses: "Roasted over fire, boiled, puréed, stuffing, gluten-free flour, marrons glacés.",
+      equipment: "Thick gloves, bag.",
+      storage:
+        "Keep cool and dry up to 2 weeks. Freeze after peeling. Dries well as flour.",
+      lookalikeFull:
+        "Horse chestnut (inedible, toxic raw) has palmate compound leaves (like an open hand) and smoother shells with fewer thick spines. Sweet chestnut has simple, long, serrated single leaves and very densely spiny husks.",
+    },
+  },
+  {
+    id: "raspberry",
+    name: "Wild Raspberry",
+    latinName: "Rubus idaeus",
+    category: "Fruits",
+    prep: "raw",
+    seasonStart: 6,
+    seasonEnd: 8,
+    habitat: "Woodland clearings, scrub, hedgerow edge",
+    keyId: [
+      "Soft red berry that leaves a hollow core when picked — the defining field characteristic",
+      "Erect canes with fine pale thorns; compound leaves of 3–5 leaflets, white-downy beneath",
+    ],
+    lookalike: null,
+    nutrition: { protein: 0.3, vitaminC: 0.85, iron: 0.45 },
+    locationHint:
+      "Leigh Woods clearings and Oldbury Court estate have wild raspberry patches in sunny woodland gaps.",
+    full: {
+      idPoints: [
+        "Erect biennial canes with fine pale downward-curved thorns",
+        "Compound leaves 3–5 leaflets, bright green above, conspicuously white-downy beneath",
+        "Small five-petalled drooping white flowers",
+        "Soft red aggregated drupes — leaves a distinct hollow core on the stem when picked",
+        "Stems light greenish-white with white waxy bloom in first year",
+      ],
+      harvest:
+        "Pick fully red and soft from July. Early morning harvesting best. Handle gently — crush easily.",
+      uses: "Fresh eating, jam, cordial, wine, vinegar, baking, as a fresh garnish.",
+      equipment: "Small container to avoid crushing.",
+      storage:
+        "Use within 1–2 days. Freeze immediately for longer storage.",
+      lookalikeFull:
+        "No dangerous lookalikes. All wild Rubus species produce edible berries. The hollow core when picked is unmistakable.",
+    },
+  },
+  {
+    id: "meadowsweet",
+    name: "Meadowsweet",
+    latinName: "Filipendula ulmaria",
+    category: "Herbs",
+    prep: "process",
+    seasonStart: 5,
+    seasonEnd: 7,
+    habitat: "Riverbanks, wet meadows, damp woodland edge",
+    keyId: [
+      "Dense frothy clusters of tiny cream flowers with an intense sweet almond fragrance",
+      "Pinnate leaves with a large terminal leaflet and smaller lateral pairs, white-felted beneath",
+    ],
+    lookalike: null,
+    nutrition: { protein: 0.1, vitaminC: 0.35, iron: 0.2 },
+    locationHint:
+      "Snuff Mills and the Avon Valley riverbanks have abundant meadowsweet throughout July. The scent announces it from metres away.",
+    full: {
+      idPoints: [
+        "Dense frothy panicle of tiny cream flowers, each with five petals",
+        "Intensely sweet almond-like fragrance — distinctive and unmissable",
+        "Pinnate leaves: large terminal leaflet, smaller side leaflets, white-felted below",
+        "Erect stems, often reddish, 60–120cm tall",
+        "Grows in large colonies on damp or wet ground",
+      ],
+      harvest:
+        "Collect flower heads when fully open and fragrant. Use same day or dry immediately at low heat.",
+      uses: "Cordial, wine, ice cream flavouring, herbal tea. Contains salicylates (aspirin precursor) — avoid if aspirin-sensitive.",
+      equipment: "Scissors, paper bag.",
+      storage:
+        "Use fresh within 24 hours or dry in bunches at low heat. Dried flowers keep for months.",
+      lookalikeFull:
+        "No dangerous lookalikes. Elder flowers are flat-topped corymbs on woody stems. Meadowsweet is herbaceous with the distinctive sweet almond scent.",
+    },
+  },
+  {
+    id: "penny-bun",
+    name: "Penny Bun / Cep",
+    latinName: "Boletus edulis",
+    category: "Fungi",
+    prep: "cook",
+    seasonStart: 7,
+    seasonEnd: 9,
+    habitat: "Deciduous and coniferous woodland, under oak and beech",
+    keyId: [
+      "Bun-shaped tan-brown cap with fine white network (reticulation) on the upper stem",
+      "White to pale cream pores beneath cap — do not bruise blue when pressed",
+    ],
+    lookalike:
+      "Satan's Bolete (Rubroboletus satanas) — TOXIC, red pores, blue-staining flesh. RULE: any bolete with red pores OR that stains blue strongly when cut — do not eat.",
+    nutrition: { protein: 0.8, vitaminC: 0.1, iron: 0.6 },
+    locationHint:
+      "Leigh Woods near old oaks and Goblin Combe beech woodland from August. One of Britain's finest edible fungi.",
+    full: {
+      idPoints: [
+        "Smooth bun-shaped cap, tan to mid-brown, often paler at margin",
+        "White to cream pores beneath — do not discolour significantly when pressed",
+        "Pale bulbous stem with fine white net reticulation on upper portion",
+        "Solid dense white flesh does not change colour when cut or bruised",
+        "Pleasant nutty mushroom smell",
+      ],
+      harvest:
+        "Cut at base. Check for maggot tunnels. Older specimens often holed. Brush clean — do not wash.",
+      uses: "The king of edible fungi. Pan-fried in butter, risotto, pasta, dried for intense flavour.",
+      equipment: "Knife, paper bag, soft brush.",
+      storage:
+        "Use within 3 days. Slice and dry for exceptional shelf life — flavour intensifies dramatically when dried.",
+      lookalikeFull:
+        "Satan's Bolete — red/orange pores, strong blue-staining flesh, under lime trees. Bay Bolete (edible) stains faintly blue. RULE: avoid all boletes with red pores or strong blue staining on cutting.",
+      sporePrint: "Olive-brown",
+    },
+  },
+  {
+    id: "oyster-mushroom",
+    name: "Oyster Mushroom",
+    latinName: "Pleurotus ostreatus",
+    category: "Fungi",
+    prep: "cook",
+    seasonStart: 9,
+    seasonEnd: 1,
+    habitat: "Dead standing or fallen deciduous wood, especially beech and elm",
+    keyId: [
+      "Fan to oyster-shaped grey to blue-grey caps in overlapping tiers from dead wood",
+      "White gills running down a very short stubby off-centre stem; no ring",
+    ],
+    lookalike:
+      "Angel Wings (Pleurocybella porrigens) — TOXIC, pure white, grows on conifer wood only. Oyster mushrooms are grey-brown and grow exclusively on deciduous trees.",
+    nutrition: { protein: 0.65, vitaminC: 0.2, iron: 0.45 },
+    locationHint:
+      "Dead beech and elm throughout Leigh Woods and Blaise Castle estate. One of the few good edible fungi available in mild winters.",
+    full: {
+      idPoints: [
+        "Fan to oyster-shaped cap, grey to blue-grey to grey-brown",
+        "Growing in overlapping tiers or clusters on dead deciduous wood",
+        "Crowded white gills running down a very short stubby lateral stem",
+        "Mild pleasant anise-mushroom scent",
+        "No ring; cap margin inrolled when young",
+      ],
+      harvest:
+        "Harvest young, firm, fresh specimens. Twist off cleanly. Older specimens toughen and lose flavour quickly.",
+      uses: "Pan-fried, stir-fry, soups, pasta. Strong flavour pairs well with garlic and butter.",
+      equipment: "Knife or hands, bag.",
+      storage: "Use within 3–4 days. Sauté and freeze for longer storage.",
+      lookalikeFull:
+        "Angel Wings (Pleurocybella porrigens) — pure white, grows only on conifer wood, reported toxic. Oyster mushrooms are grey-brown on deciduous trees exclusively. Confirm wood species if uncertain.",
+      sporePrint: "Lilac-white",
+    },
+  },
 ];
 
 /** Look up a single species by ID */

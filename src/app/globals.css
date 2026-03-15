@@ -83,3 +83,31 @@ body {
   font-size: 13px;
   line-height: 1.5;
 }
+
+/* Leaflet tooltip styling */
+.leaflet-tooltip {
+  background: white !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12) !important;
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--ink) !important;
+  padding: 6px 10px !important;
+  white-space: nowrap;
+}
+
+.leaflet-tooltip::before {
+  display: none !important;
+}
+
+/* Slide-in-up for location panel */
+@keyframes slideInUpPanel {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-in-up {
+  animation: slideInUpPanel 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}

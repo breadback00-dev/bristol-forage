@@ -48,7 +48,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         <Nav />
-        <main className="pt-12">{children}</main>
+        <main className="pt-0">{children}</main>
       </body>
     </html>
   );
